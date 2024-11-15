@@ -1,43 +1,54 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("recommendationForm");
-  const addReviewLink = document.getElementById("add-review-link");
+document.addEventListener("DOMContentLoaded", () => {
+  const genreSelect = document.getElementById("genre");
+  const movieTitle = document
+    .getElementById("movie-title")
+    .querySelector("span");
+  const movieGenre = document
+    .getElementById("movie-genre")
+    .querySelector("span");
+  const movieDescription = document
+    .getElementById("movie-description")
+    .querySelector("span");
 
-  addReviewLink.addEventListener("click", function (event) {
-    event.preventDefault();
-    const review = prompt("Escribe tu reseña:");
-    if (review) {
-      localStorage.setItem("review", review);
-      alert("Reseña guardada!");
-    }
+  genreSelect.addEventListener("change", (event) => {
+    const selectedGenre = event.target.value;
+    // Aquí puedes agregar lógica para obtener la información de la película basada en el género seleccionado
+    // Por ejemplo, podrías hacer una llamada a una API o buscar en un objeto local
+    const movieInfo = getMovieInfoByGenre(selectedGenre);
+    movieTitle.textContent = movieInfo.title;
+    movieGenre.textContent = movieInfo.genre;
+    movieDescription.textContent = movieInfo.description;
   });
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const bookTitle = document.getElementById("book-title").value;
-    const author = document.getElementById("author").value;
-    const genre = document.getElementById("genre").value;
-    const review = localStorage.getItem("review") || "";
-
-    const recommendation = {
-      bookTitle,
-      author,
-      genre,
-      review,
+  function getMovieInfoByGenre(genre) {
+    // Ejemplo de datos de películas
+    const movies = {
+      ficcion: {
+        title: "Película de Ficción",
+        genre: "Ficción",
+        description: "Descripción de la película de ficción.",
+      },
+      "no-ficcion": {
+        title: "Película de No Ficción",
+        genre: "No Ficción",
+        description: "Descripción de la película de no ficción.",
+      },
+      misterio: {
+        title: "Película de Misterio",
+        genre: "Misterio",
+        description: "Descripción de la película de misterio.",
+      },
+      fantasia: {
+        title: "Película de Fantasía",
+        genre: "Fantasía",
+        description: "Descripción de la película de fantasía.",
+      },
+      "ciencia-ficcion": {
+        title: "Película de Ciencia Ficción",
+        genre: "Ciencia Ficción",
+        description: "Descripción de la película de ciencia ficción.",
+      },
     };
-
-    let recommendations = localStorage.getItem("recommendations");
-    if (recommendations) {
-      recommendations = JSON.parse(recommendations);
-    } else {
-      recommendations = [];
-    }
-
-    recommendations.push(recommendation);
-    localStorage.setItem("recommendations", JSON.stringify(recommendations));
-
-    alert("Gracias por tu recomendación!");
-    form.reset();
-    localStorage.removeItem("review");
-  });
+    return movies[genre];
+  }
 });

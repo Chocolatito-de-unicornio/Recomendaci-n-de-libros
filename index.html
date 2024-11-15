@@ -1,61 +1,131 @@
-<label for="author">Autor:</label>
-<input type="text" id="author" name="author" required />
-<label for="genre">Género:</label>
-<input type="text" id="genre" name="genre" required />
-<a href="#" id="add-review-link">Añadir Reseña</a>
-<button type="submit">Enviar Recomendación</button>
-</form>
-</section>
-</main>
-<footer>
-<p>&copy; 2024 Recomendación de Libros - 9ºEBI - CJH</p>
-</footer>
-</body>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recomendación de Libros</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Recomendación de Libros</h1>
+    </header>
+    <main>
+      <section>
+        <form>
+          <label for="genre">Género:</label>
+          <select id="genre" name="genre" required>
+            <option value="">Seleccione un género</option>
+            <option value="suspenso">Suspenso, Misterio y Policiales</option>
+            <option value="fantasia">Fantasía y Ciencia Ficción</option>
+            <option value="romance">Romance</option>
+            <option value="infantil">Infantil</option>
+          </select>
+
+          <label for="book">Libro:</label>
+          <select id="book" name="book" required>
+            <option value="">Seleccione un libro</option>
+          </select>
+
+          <button type="submit">Enviar Recomendación</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 Recomendación de Libros - 9ºEBI - CJH</p>
+    </footer>
+    <script>
+      const booksByGenre = {
+        suspenso: [
+          "No hay orquídeas para miss Blandish - Chase",
+          "Saga de Enola Holmes - Nancy Springer",
+          "Te amo León - Marcos Vasquez",
+          "Cuerpos de Carbón - Marcos Vasquez",
+          "Asesinato para principiantes - Holly Jackson",
+          "Saga de Martin - Gabriela Armand Ugon",
+          "Detectives en el cementerio central - Helen Velando",
+          "Detectives en el parque rodó - Helen Velando",
+          "Sherlock Holmes - Arthur Conan Doyle",
+        ],
+        fantasia: [
+          "Saga de Harry Potter - JK Rowling",
+          "Saga de alas - Rebecca Yarros",
+          "El problema de los tres cuerpos - Cixin Liu",
+          "ET el extraterrestre - William Kotzwinkle",
+          "Sombra y hueso - Leigh Bardugo",
+          "Powerless - Lauren Roberts",
+          "De sangre y cenizas - Jennifer L. Armentrout",
+          "Érase una vez un corazón roto - Stephanie Garber",
+          "El príncipe cruel - Holly Black",
+        ],
+        romance: [
+          "Saga de Heartstopper - Alice Oseman",
+          "Boulevard - Flor M. Salvador",
+          "Rojo, blanco y sangre azul - Casey McQuiston",
+          "Al final mueren los dos - Adam Silvera",
+          "Saga 'Meses a tu lado' - Joana Marcus",
+          "Sigue mi voz - Ariana Godoy",
+          "Llámame por tu nombre - André Aciman",
+          "Un cuento perfecto - Elizabeth Benavent",
+          "Hasta que no queden más estrellas que contar - María Martínez",
+          "Saga 'Twisted' - Ana Huang",
+          "La hipótesis del amor - Ali Hazelwood",
+        ],
+        infantil: [
+          "Saga de la Bruja Winnie - Korky Paul y Valérie Thomas",
+          "Julieta que planteaste - Susana Olaondo",
+          "Saga de el elefante Elmer - David McKee",
+          "El Lorax - Dr. Seuss",
+          "Vicente y el monstruo horripilante - Karina Marcadar",
+          "El monstruo de los colores - Anna Llenas",
+        ],
+      };
+
+      document.getElementById("genre").addEventListener("change", function () {
+        const genre = this.value;
+        const bookSelect = document.getElementById("book");
+        bookSelect.innerHTML = '<option value="">Seleccione un libro</option>'; // Limpiar opciones anteriores
+
+        // Agrega nuevas opciones basadas en el género seleccionado
+        if (genre && booksByGenre[genre]) {
+          booksByGenre[genre].forEach((book) => {
+            const option = document.createElement("option");
+            option.value = book;
+            option.textContent = book;
+            bookSelect.appendChild(option);
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
-<script src="scripts.js"></script>
-<nav>
-<ul>
-<li><a href="index.html">Inicio</a></li>
-<li><a href="recommendation.html">Recomienda un Libro</a></li>
-</ul>
-</nav>
-#Lista de recomendación de libros
-1) Suspenso, misterio y policiales
-- No hay orquídeas para miss Blandish. Autor:Chase. Más de 13 años 
-- Saga de Enola Holmes. Autora: Nancy Springer. Más de 11 años . 
-- Te amo León. Autor: Marcos Vasquez. Para adolescentes.
-- Cuerpos de Carbón. Autor: Marcos Vasquez. Para Adolescentes 
-- Asesinato para principiantes. Autora: Holly Jackson. Más de 16 años. 
--Saga de Martin. Autora: Gabriela Armand Ugon. Para todas las edades. 
--Detectives en el cementerio central. Autora: Helen Velando. Para todas las edades. 
--Detectives en el parque rodó. Autora: Helen Velando. Para todas las edades. 
--Sherlock Holmes. Autor: Doyle. Más de 11 años. 
-2) Fantasía y Ciencia Ficción 
-- Saga de Harry Potter. Autora: JK Rowling. Para más de 12 años. 
-- Saga de alas. Autora: Rebecca Yarros. Para más de 18 años. 
-- El problema de los tres cuerpos. Autor: Cixin Liu. Para más de 15 años. 
-- ET el extraterrestre. Autor: KOTZWINKLE, William. Más de 10 años. 
---Sombra y hueso. Leigh Bardugo. A partir de 14 años. 
--Powerles. Lauren Roberts. A partir de 12 años 
--De sangre y cenizas. Jennifer L. Armentrout. A partir de 16 años. 
--Erase una vez un corazón roto. Stephanie Garber. A partir de 14 años 
--El principe cruel. Holly Black. A partir de 12 años
-3) Romance
-- Saga de Heartstoper. Autora: Alice Oseman. Para más de 16 años. 
-- Boulevard. Autora: Flor M.Salvador. Más 16 
--Rojo blanco y sangre azul. Autor: Casey McQuiston. Más 15 
--Al final mueren los dos. Autor: Silvera. Más 13 
--Saga 'Meses a tu lado'. Autora: Joana Marcus. Más 16 
--Sigue mi voz. Autor: Ariana Godoy. Más 14 
--Llámame por tu nombre. Autor: Andre Aciman. Más 16.
--Un cuento perfecto. Autor: Elizabeth Benavent. Más 17 
--Hasta que no queden más estrellas que contar. Autor: María Martinez. Más 16. 
--Saga 'Twisted'. Autora: Ana Huang. Mas 18 
--La hipótesis del amor. Autor: Ali Hazelwood. Más 18
-4) Infantil 
-- Saga de la Bruja Winnie. Autores: Korky Paul, Valérie Thomas. 
-- Julieta que planteaste. Autora: Susana Olaondo.
-- Saga de el elefante Elmer. Autor: Virginia Brown. 
-- El Lorax. Autor: Dr. Seuse 
--Vicente y el mounstro horripilante. Autora: Karina Marcadar. 
-- El mounstro de los colores. Autora: Anna Llenas#
+
+#Lista de recomendación de libros 1) Suspenso, misterio y policiales - No hay
+orquídeas para miss Blandish. Autor:Chase. Más de 13 años - Saga de Enola
+Holmes. Autora: Nancy Springer. Más de 11 años . - Te amo León. Autor: Marcos
+Vasquez. Para adolescentes. - Cuerpos de Carbón. Autor: Marcos Vasquez. Para
+Adolescentes - Asesinato para principiantes. Autora: Holly Jackson. Más de 16
+años. -Saga de Martin. Autora: Gabriela Armand Ugon. Para todas las edades.
+-Detectives en el cementerio central. Autora: Helen Velando. Para todas las
+edades. -Detectives en el parque rodó. Autora: Helen Velando. Para todas las
+edades. -Sherlock Holmes. Autor: Doyle. Más de 11 años. 2) Fantasía y Ciencia
+Ficción - Saga de Harry Potter. Autora: JK Rowling. Para más de 12 años. - Saga
+de alas. Autora: Rebecca Yarros. Para más de 18 años. - El problema de los tres
+cuerpos. Autor: Cixin Liu. Para más de 15 años. - ET el extraterrestre. Autor:
+KOTZWINKLE, William. Más de 10 años. --Sombra y hueso. Leigh Bardugo. A partir
+de 14 años. -Powerles. Lauren Roberts. A partir de 12 años -De sangre y cenizas.
+Jennifer L. Armentrout. A partir de 16 años. -Erase una vez un corazón roto.
+Stephanie Garber. A partir de 14 años -El principe cruel. Holly Black. A partir
+de 12 años 3) Romance - Saga de Heartstoper. Autora: Alice Oseman. Para más de
+16 años. - Boulevard. Autora: Flor M.Salvador. Más 16 -Rojo blanco y sangre
+azul. Autor: Casey McQuiston. Más 15 -Al final mueren los dos. Autor: Silvera.
+Más 13 -Saga 'Meses a tu lado'. Autora: Joana Marcus. Más 16 -Sigue mi voz.
+Autor: Ariana Godoy. Más 14 -Llámame por tu nombre. Autor: Andre Aciman. Más 16.
+-Un cuento perfecto. Autor: Elizabeth Benavent. Más 17 -Hasta que no queden más
+estrellas que contar. Autor: María Martinez. Más 16. -Saga 'Twisted'. Autora:
+Ana Huang. Mas 18 -La hipótesis del amor. Autor: Ali Hazelwood. Más 18 4)
+Infantil - Saga de la Bruja Winnie. Autores: Korky Paul, Valérie Thomas. -
+Julieta que planteaste. Autora: Susana Olaondo. - Saga de el elefante Elmer.
+Autor: Virginia Brown. - El Lorax. Autor: Dr. Seuse -Vicente y el mounstro
+horripilante. Autora: Karina Marcadar. - El mounstro de los colores. Autora:
+Anna Llenas#
