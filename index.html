@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recomendación de Libros</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Recomendación de Libros</h1>
+    </header>
+    <main>
+      <section id="book-list">
+        <h2>Lista de Libros</h2>
+        <ul>
+          <li>Libro 1</li>
+          <li>Libro 2</li>
+          <li>Libro 3</li>
+        </ul>
+      </section>
+      <section id="recommendation-form">
+        <h2>Recomienda un Libro</h2>
+        <form action="submit_recommendation.php" method="post">
+          <label for="book-title">Título del Libro:</label>
+          <input type="text" id="book-title" name="book-title" required />
+          <label for="author">Autor:</label>
+          <input type="text" id="author" name="author" required />
+          <label for="genre">Género:</label>
+          <input type="text" id="genre" name="genre" required />
+          <button type="submit">Enviar Recomendación</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Recomendación de Libros</p>
+    </footer>
+  </body>
+</html>
+<script src="scripts.js"></script>
+<nav>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="recommendation.html">Recomienda un Libro</a></li>
+  </ul>
+</nav>
